@@ -1,6 +1,17 @@
-import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/solid";
+import {
+  ChatAltIcon,
+  ShareIcon,
+  ThumbUpIcon,
+  DotsHorizontalIcon,
+  TrashIcon,
+} from "@heroicons/react/solid";
 import { db } from "../firebase";
+import firebase from "firebase";
+
 import { useEffect, useState } from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
 
 function Post({
   id,
@@ -81,18 +92,64 @@ function Post({
       timestamp: timestamp,
     });
   };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // const deletePost = async (e) => {
+  //   e.preventDefault();
+  //   // const docRef = db.collection("post").doc(id);
+  //   // await deleteDoc(docRef);
+  //   // showAlert("error", `todo ${id} delete`);
+  //   const docRef = db.collection("posts").doc(id);
+
+  //   const removePost = docRef.update({
+  //     post: firebase.firestore.FieldValue.delete(),
+  //   });
+  // };
   return (
     <div className="flex flex-col">
       <div className="p-5 bg-white rounded-t-2xl shadow-sm mt-5">
-        <div className="items-center flex space-x-2">
-          <img src={avatar} className="rounded-full w-10 h-10 cursor-pointer" />
-          <div>
-            <p className="font-medium cursor-pointer">{name}</p>
+        <div className="items-center justify-between flex space-x-2">
+          <div className="flex">
+            <img
+              src={avatar}
+              className="rounded-full w-10 h-10 cursor-pointer mr-2"
+            />
+            <div>
+              <p className="font-medium cursor-pointer">{name}</p>
 
-            <p className="text-xs text-gray-400">
-              {new Date(timestamp?.toDate()).toLocaleString()}
-            </p>
+              <p className="text-xs text-gray-400">
+                {new Date(timestamp?.toDate()).toLocaleString()}
+              </p>
+            </div>
           </div>
+          {/* <DotsHorizontalIcon
+            className="h-4 cursor-pointer"
+            id="fade-button"
+            aria-controls={open ? "fade-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          />
+          <Menu
+            id="fade-menu"
+            MenuListProps={{
+              "aria-labelledby": "fade-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+          >
+            <MenuItem onClick={(e) => deletePost(e)}>Delete</MenuItem>
+          </Menu> */}
         </div>
         <p className="pt-4">{message}</p>
       </div>
