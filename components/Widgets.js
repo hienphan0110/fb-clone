@@ -36,10 +36,6 @@ function Widgets() {
       name: "Billie Eilish",
       src: "https://i.pinimg.com/564x/24/ef/12/24ef124766fb6b34a273197b29dbaa13.jpg",
     },
-    {
-      name: "G Dragon",
-      src: "https://i.pinimg.com/564x/78/bc/36/78bc36f5acf02afb8dc3e112eb1d80fd.jpg",
-    },
   ];
   return (
     <div className="w-64 m-6">

@@ -3,15 +3,15 @@ import {
   ShareIcon,
   ThumbUpIcon,
   DotsHorizontalIcon,
-  TrashIcon,
 } from "@heroicons/react/solid";
 import { db } from "../firebase";
-import firebase from "firebase";
-
 import { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Delete from "@mui/icons-material/Delete";
 
 function Post({
   id,
@@ -102,17 +102,9 @@ function Post({
     setAnchorEl(null);
   };
 
-  // const deletePost = async (e) => {
-  //   e.preventDefault();
-  //   // const docRef = db.collection("post").doc(id);
-  //   // await deleteDoc(docRef);
-  //   // showAlert("error", `todo ${id} delete`);
-  //   const docRef = db.collection("posts").doc(id);
-
-  //   const removePost = docRef.update({
-  //     post: firebase.firestore.FieldValue.delete(),
-  //   });
-  // };
+  const deletePost = async (id) => {
+    await db.collection("posts").doc(id).delete();
+  };
   return (
     <div className="flex flex-col">
       <div className="p-5 bg-white rounded-t-2xl shadow-sm mt-5">
@@ -130,7 +122,7 @@ function Post({
               </p>
             </div>
           </div>
-          {/* <DotsHorizontalIcon
+          <DotsHorizontalIcon
             className="h-4 cursor-pointer"
             id="fade-button"
             aria-controls={open ? "fade-menu" : undefined}
@@ -148,8 +140,13 @@ function Post({
             onClose={handleClose}
             TransitionComponent={Fade}
           >
-            <MenuItem onClick={(e) => deletePost(e)}>Delete</MenuItem>
-          </Menu> */}
+            <MenuItem onClick={() => deletePost(id)}>
+              <ListItemIcon>
+                <Delete fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Delete</ListItemText>
+            </MenuItem>
+          </Menu>
         </div>
         <p className="pt-4">{message}</p>
       </div>
