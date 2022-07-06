@@ -9,13 +9,13 @@ import "firebase/storage";
 // import { collection, getDocs } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCO37nPMBUK6juJ9dmxXzIlrS2Ng0uY-IM",
-  authDomain: "faceb-4f7fb.firebaseapp.com",
-  projectId: "faceb-4f7fb",
-  storageBucket: "faceb-4f7fb.appspot.com",
-  messagingSenderId: "948897916391",
-  appId: "1:948897916391:web:766c37e6b5dba8b4680942",
-  measurementId: "G-QETDY84LF1",
+  apiKey: "AIzaSyCYuzCXBy4Fh0CoNPRnPPj4G1C1CnN4Pus",
+  authDomain: "fb-2-a7f91.firebaseapp.com",
+  projectId: "fb-2-a7f91",
+  storageBucket: "fb-2-a7f91.appspot.com",
+  messagingSenderId: "849553030507",
+  appId: "1:849553030507:web:e83103f7fda901d02f602e",
+  measurementId: "G-EKJJZHQF6J",
 };
 
 const app = !firebase.apps.length
